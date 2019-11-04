@@ -1,0 +1,9 @@
+.DS_Store
+.idea/
+.vscode/
+dist/
+vendor/*/
+goboiler
+clean.sh
+config.local.yaml
+vendor

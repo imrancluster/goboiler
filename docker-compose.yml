@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  web:
+    container_name: goboiler_api
+    restart: always
+    build: .
+    environment:
+      - GOBOILER_CONSUL_URL=consul:8500
+      - GOBOILER_CONSUL_PATH=goboiler
+      - DEBUG=true
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+      - redis
+      - consul
+
+  db:
+    container_name: goboiler_db
+    image: postgres:11.4-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=postgres
+    ports:
+      - 5431:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    container_name: goboiler_redis
+    image: redis:alpine
+    ports:
+      - 6378:6379
+
+  consul:
+    container_name: goboiler_consul
+    image: consul:latest
+    ports:
+      - 8500:8500
+
+volumes:
+  pgdata:

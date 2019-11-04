@@ -1,0 +1,26 @@
+app:
+    port: "5000"
+    read_timeout: 30
+    request_timeout: 3
+    sentry: URL
+    env: local
+    app_key: APP_KEY
+    user_token: USER_TOKEN
+
+redis:
+    host: localhost
+    port: 6379
+    db: 0
+    prefix: goboiler
+
+db:
+    host: localhost
+    port: 5431
+    name: postgres
+    username: postgres
+    password: "12345"
+aws:
+    s3_key: AWS_KEY
+    s3_secret: AWS_SECRET
+    s3_region: AWS_REGION
+    s3_bucket: AWS_BUCKET_NAME
